@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            height: 2500px;
+        }
+        #QQ{
+            width: 200px;
+            height: 250px;
+            background: #ffcc00;
+            position: fixed;
+            overflow: hidden;
+            right: -160px;
+            top: 250px;
+            border-radius: 5px 0 0 5px;
+        }
+        #QQ .but{
+            width: 40px;
+            height: 250px;
+            background: url("images/but_bg.png") no-repeat left center;
+            float: left;
+
+        }
+        #QQ .QQ_con{
+            width: 150px;
+            height: 230px;
+            background: #ffffff;
+            float: right;
+            margin: 10px 10px 0 0;
+            border-radius: 5px;
+        }
+        #QQ .QQ_con h3{
+            font-size: 14px;
+            font-family: "微软雅黑";
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+        }
+        #QQ .QQ_con ul{
+            padding: 0px 5px;
+        }
+        #QQ .QQ_con ul li{
+            height: 36px;
+            /*width: ;*/
+            /*border: 1px solid red;*/
+            border-bottom: 1px solid #ddd;
+            list-style: none;
+            font-size: 12px;
+            line-height: 36px;
+        }
+        #QQ .QQ_con ul li.last{
+            text-align: center;
+            border: 0px;
+        }
+    </style>
+</head>
+<body>
+<div id="QQ">
+    <div class="but"></div>
+    <div class="QQ_con">
+        <h3>潭州学院在线客户</h3>
+        <ul>
+
+            <li>售后客户：<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=747527625&amp;site=qq&amp;menu=yes" target="_blank"><img src="images/qq.png" align="absmiddle" alt=""/></a></li>
+            <li>VIP报名： <img src="images/qq.png" align="absmiddle" alt=""/></li>
+            <li>技术顾问：<img src="images/qq.png" align="absmiddle" alt=""/></li>
+            <li>清心总监：<img src="images/qq.png" align="absmiddle" alt=""/></li>
+            <li class="last">电话：400-009-6359</li>
+        </ul>
+    </div>
+</div>
+<script src="js/jquery.js"></script>
+<script>
+    var mark = 1;
+
+    $("#QQ .but").click(function(){
+        if(mark == 1){
+        $("#QQ").animate({
+//            width:"200px"
+            right:"0px"
+        },300);
+//        $(this).css({
+//            "background-position":"right center"
+//        });
+            mark = 2;
+        }else if(mark == 2){
+            $("#QQ").animate({
+                right:"-160px"
+            },300);
+//            $(this).css({
+//                "background-position":"left center"
+//            })
+            mark = 1;
+        }
+    })
+</script>
+</body>
+</html>

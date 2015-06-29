@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: url("images/bg.jpg");
+            overflow: hidden;
+        }
+        #pic{
+            width: 750px;
+            height: 540px;
+            margin: 100px auto 0;
+        }
+        #pic ul{
+            list-style: none;
+        }
+        #pic ul li{
+            width: 238px;
+            height: 167px;
+            float: left;
+            margin: 5px;
+            background: #ffffff;
+            box-shadow: 0 0 20px #ffcc00;
+        }
+        #pic img{
+            width: 230px;
+            height: 159px;
+            padding: 4px;
+        }
+        #showImage{
+            width: 660px;
+            height: 458px;
+            background: #ffffff;
+
+        }
+        #showImage span{
+            width: 660px;
+            height: 458px;
+
+            background: #ffffff;
+        }
+        #showImage img{
+            width: 650px;
+            height: 450px;
+            padding: 4px;
+        }
+        #show{
+            display: none;
+            border: 1px solid green;
+            position: absolute;
+            width: 650px;
+            height: 450px;
+            left: 50%;
+            margin-left: -325px;
+            top: 138px;
+            z-index: 20;
+        }
+        #showImage span{
+            position: absolute;
+        }
+        #next,#prev{
+            display: none;
+            width: 40px;
+            height: 80px;
+            color: #ffffff;
+            position: absolute;
+            top:320px;
+            font-size: 30px;
+            z-index: 20;
+            border: 2px solid #ffffff;
+            text-align: center;
+            border-radius: 5px;
+            box-shadow: 0 0 20px #ffffff;
+            font-family: "微软雅黑";
+            line-height: 80px;
+            cursor: pointer;
+        }
+        #prev{
+            left: 150px;
+        }
+        #next{
+            right: 150px;
+        }
+        #pan{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 10;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="pic">
+    <ul>
+        <li><img src="images/main/1.jpg" alt=""/></li>
+        <li><img src="images/main/2.jpg" alt=""/></li>
+        <li><img src="images/main/3.jpg" alt=""/></li>
+        <li><img src="images/main/4.jpg" alt=""/></li>
+        <li><img src="images/main/5.jpg" alt=""/></li>
+        <li><img src="images/main/6.jpg" alt=""/></li>
+        <li><img src="images/main/7.jpg" alt=""/></li>
+        <li><img src="images/main/8.jpg" alt=""/></li>
+        <li><img src="images/main/9.jpg" alt=""/></li>
+    </ul>
+</div>
+
+
+<div id="pan">
+
+</div>
+
+<div id="show">
+    <div id="showImage">
+        <span><img src="images/show/0/1.jpg" alt=""/></span>
+        <span><img src="images/show/0/2.jpg" alt=""/></span>
+        <span><img src="images/show/0/3.jpg" alt=""/></span>
+        <span><img src="images/show/0/4.jpg" alt=""/></span>
+        <span><img src="images/show/0/5.jpg" alt=""/></span>
+    </div>
+
+</div>
+<span id="next"><p>&gt;</p></span>
+<span id="prev"><p>&lt;</p></span>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+    $(function(){
+        $("#pic ul li").click(function(){
+            var $imgs = $("#showImage img");
+            var index = $(this).index();
+            for(var i = 0;i<5;i++){
+                var url = "images/show/"+index+"/"+(i+1)+".jpg";
+                $imgs.eq(i).attr("src",url);
+            }
+
+
+            $("#show").fadeIn(500);
+            $("#next").fadeIn(500);
+            $("#prev").fadeIn(500);
+            $("#pan").fadeIn(500);
+        });
+
+        $("#next").click(function(){
+            $("#showImage span:last").stop(true).animate({"left":"670px"},500,function(){
+                $(this).stop(true).animate({"left":"0px"},500);
+                $("#showImage").prepend($(this))
+            });
+            $("#show").stop(true).animate({"left":"25%"},500,function(){
+                $(this).stop(true).animate({"left":"50%"},500)
+            });
+        });
+
+        $("#prev").click(function(){
+            $("#showImage span:first").stop(true).animate({"left":"670px"},500,function(){
+                $(this).stop(true).animate({"left":"0px"},500);
+                $("#showImage").append($(this));
+            })
+            $("#show").stop(true).animate({"left":"25%"},500,function(){
+                $(this).stop(true).animate({"left":"50%"},500)
+            });
+        })
+
+        $("#pan").click(function(){
+            $("#show").fadeOut(500);
+            $("#next").fadeOut(500);
+            $("#prev").fadeOut(500);
+            $("#pan").fadeOut(500);
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .movie{
+            margin: 0 auto;
+            width: 1000px;
+            height: 170px;
+            border: 1px solid #ccc;
+        }
+        .movie ul{
+            width: 100%;
+            height: 170px;
+        }
+        .movie ul li{
+            width: 240px;
+            height: 160px;
+           /*border: 1px solid blue;*/
+            list-style-type: none;
+            float: left;
+            padding: 4px;
+            cursor:pointer;
+            box-shadow: 0 0 20px #000;
+            position: relative;
+            overflow: hidden;
+        }
+        .movie ul li div.con{
+            width: 240px;
+            height: 160px;
+            /*border: 1px solid red;*/
+            position: absolute;
+            left: 250px;
+            top: 3px;
+        }
+    </style>
+</head>
+<body>
+<div class="movie">
+    <ul>
+        <li>
+            <img src="imges/6.jpg" alt=""/>
+            <div class="con">dsfsfsdfsdfsdfasf</div>
+        </li>
+        <li><img src="imges/8.jpg" alt=""/> <div class="con">dsfsfsdfsdfsdfasf</div></li>
+        <li><img src="imges/9.jpg" alt=""/> <div class="con">dsfsfsdfsdfsdfasf</div></li>
+        <li><img src="imges/10.jpg" alt=""/> <div class="con">dsfsfsdfsdfsdfasf</div></li>
+    </ul>
+</div>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script>
+    $(".movie ul li").hover(function(){
+        $(this).stop(true).animate({width:"480px"},500).siblings().stop(true).animate({width:"160px"},500);
+        $(this).siblings().find("img").stop(true).animate({width:"160px",height:"160px"},500);
+    },function(){
+        $(".movie ul li").animate({width:"240px"},500);
+        $(".movie ul li").find("img").animate({width:"240px"},500)
+    })
+</script>
+</body>
+</html>

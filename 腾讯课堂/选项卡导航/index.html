@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #select{
+            width: 1050px;
+            height: 490px;
+            background: #cccccc;
+            margin: 50px auto 0;
+            /*border: 1px solid red;*/
+        }
+        #select .sec_but{
+            width: 1050px;
+            height: 45px;
+            background: #ff9966;
+            box-shadow: 0px -1px 10px #000;
+        }
+        #select .sec_but ul{
+            /*border: 2px solid #ffff00;*/
+        }
+        #select .sec_but ul li{
+            list-style: none;
+            width: 175px;
+            height: 45px;
+            /*border: 2px solid #1b2cff;*/
+            float: left;
+            font-family: "微软雅黑";
+            font-size: 16px;
+            text-align: center;
+            line-height: 45px;
+        }
+        #select .sec_but ul li.hover{
+            background: #003bb3;
+            color: #fff;
+        }
+        #select .sec_but ul li.first{
+            border-radius: 5px 0px 0px 5px;
+        }
+        #select .sec_but ul li.last{
+            border-radius: 0px 5px 5px 0px;
+        }
+        #select .Con{
+            width: 1050px;
+            height: 420px;
+            background: #cccc66;
+            margin-top: 20px;
+        }
+        #select .Con .content{
+            width: 1050px;
+            height: 420px;
+            /*border: 2px solid blueviolet;*/
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="select">
+    <div class="sec_but">
+        <ul>
+            <li class="first hover">网页制作</li>
+            <li>SEO搜索引擎</li>
+            <li>JAVA软件开发</li>
+            <li>网络营销</li>
+            <li>平面设计</li>
+            <li class="last">电子商务</li>
+        </ul>
+    </div>
+    <div class="Con">
+        <div class="content" style="display: block">网页制作</div>
+        <div class="content">SEO搜索引擎</div>
+        <div class="content">JAVA软件开发</div>
+        <div class="content">网络营销</div>
+        <div class="content">平面设计</div>
+        <div class="content">电子商务</div>
+    </div>
+</div>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script>
+    $("#select .sec_but ul li").mouseover(function(){
+        $(this).addClass("hover").siblings().removeClass("hover");
+        var _index = $("#select .sec_but ul li").index(this);
+        $(".Con .content").eq(_index).show().siblings().hide();
+    })
+</script>
+</body>
+</html>

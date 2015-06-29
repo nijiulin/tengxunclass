@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 1235px;
+            height: 410px;
+            /*border: 1px solid red;*/
+            margin: 0 auto;
+            position: relative;
+        }
+        img{
+            display: block;
+        }
+        #box .con{
+            width: 1235px;
+            height: 358px;
+            background: #9cf;
+            margin-top: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+        #box .con ul li{
+            width: 1235px;
+            height: 358px;
+            list-style: none;
+            position: absolute;
+            left: -1235px;
+            top: 0;
+        }
+        #box .con ul li .shade{
+            width: 1235px;
+            height: 93px;
+            background: rgba(0,0,0,0.8);
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+        #box .con ul li .shade span{
+            color: #fff;
+            margin-left: 160px;
+            margin-top: 10px;
+            display: block;
+            font-family: "微软雅黑";
+        }
+        #box .nav{
+            width: 1000px;
+            height: 55px;
+            /*border: 1px solid blue;*/
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            margin-left: -500px;
+        }
+        #box .nav .jtLeft{
+            width: 24px;
+            height: 40px;
+            /*border: 1px solid #cf9;*/
+            background: url("images/jt.png") -5px -7px no-repeat;
+            float: left;
+            margin-top: 2px;
+        }
+        #box .nav .jtLeft:hover{
+            background-position: -5px -77px;
+        }
+        #box .nav .jtRight{
+            width: 24px;
+            height: 40px;
+            /*border: 1px solid #cf9;*/
+            background: url("images/jt.png") -79px -7px no-repeat;
+            float: right;
+            margin-top: 2px;
+        }
+        #box .nav .jtRight:hover{
+            background-position: -79px -77px;
+        }
+        #box .nav .nav_pic{
+            width: 950px;
+            height: 50px;
+            float: left;
+        }
+        #box .nav .nav_pic ul li{
+            list-style: none;
+            float: left;
+            border: 2px solid #444;
+            margin-left: 10px;
+        }
+        #box .nav .nav_pic ul li.bg{
+            border: 2px solid #3083fd;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <img src="images/title.jpg" alt=""/>
+    <div class="con">
+        <ul>
+            <li style="left: 0">
+                <img src="images/0.jpg" alt=""/>
+                <div class="shade">
+                    <span>111111111111111111111111</span>
+                </div>
+            </li>
+            <li>
+                <img src="images/1.jpg" alt=""/>
+                <div class="shade">
+                    <span>222222222222222222222</span>
+                </div>
+            </li>
+            <li>
+                <img src="images/2.jpg" alt=""/>
+                <div class="shade">
+                    <span>333333333333333333</span>
+                </div>
+            </li>
+            <li>
+                <img src="images/3.jpg" alt=""/>
+                <div class="shade">
+                    <span>44444444444444</span>
+                </div>
+            </li>
+            <li>
+                <img src="images/4.jpg" alt=""/>
+                <div class="shade">
+                    <span>555555555555555555</span>
+                </div>
+            </li>
+            <li>
+                <img src="images/5.jpg" alt=""/>
+                <div class="shade">
+                    <span>6666666666</span>
+                </div>
+            </li>
+            <li>
+                <img src="images/6.jpg" alt=""/>
+                <div class="shade">
+                    <span>7777777777777</span>
+                </div>
+            </li>
+            <li>
+                <img src="images/7.jpg" alt=""/>
+                <div class="shade">
+                    <span>8888888888888</span>
+                </div>
+            </li>
+            <li>
+                <img src="images/8.jpg" alt=""/>
+                <div class="shade">
+                    <span>99999999999999999999</span>
+                </div>
+            </li>
+            <li>
+                <img src="images/9.jpg" alt=""/>
+                <div class="shade">
+                    <span>10101010110101</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="nav">
+        <div class="jtLeft"></div>
+        <div class="nav_pic">
+            <ul>
+                <li class="bg"><img src="images/nav0.jpg" alt=""/></li>
+                <li><img src="images/nav1.jpg" alt=""/></li>
+                <li><img src="images/nav2.jpg" alt=""/></li>
+                <li><img src="images/nav3.jpg" alt=""/></li>
+                <li><img src="images/nav4.jpg" alt=""/></li>
+                <li><img src="images/nav5.jpg" alt=""/></li>
+                <li><img src="images/nav6.jpg" alt=""/></li>
+                <li><img src="images/nav7.jpg" alt=""/></li>
+                <li><img src="images/nav8.jpg" alt=""/></li>
+                <li><img src="images/nav9.jpg" alt=""/></li>
+            </ul>
+        </div>
+        <div class="jtRight"></div>
+    </div>
+</div>
+<script src="js/jquery.js"></script>
+<script>
+    var a = 0;
+    var b = 0;
+    var timer = null;
+    //自动轮播
+    function auto(){
+        timer = setInterval(function(){
+            a++;
+            if(a>9){
+                a = 0
+            }
+            $("#box .con ul li").eq(b).stop(true,true).animate({
+                left:"-1235px"
+            },1000)
+            $("#box .con ul li").eq(a).stop(true,true).css({
+                "left":"1235px"
+            })
+            $("#box .con ul li").eq(a).stop(true,true).animate({
+                left:"0px"
+            },1000)
+            b = a;
+            $("#box .nav .nav_pic ul li").eq(a).addClass("bg").siblings().removeClass("bg");
+        },2000)
+    }
+    auto();
+    //自动轮播结束
+    //左按钮
+    $(".jtLeft").click(function(){
+//        clearInterval(timer);
+        a--;
+        if(a<0){
+            a = 9
+        }
+        $("#box .con ul li").eq(b).stop(true,true).animate({
+            left:"1235px"
+        },1000)
+        $("#box .con ul li").eq(a).stop(true,true).css({
+            "left":"-1235px"
+        })
+        $("#box .con ul li").eq(a).stop(true,true).animate({
+            left:"0px"
+        },1000)
+        b = a;
+        $("#box .nav .nav_pic ul li").eq(a).addClass("bg").siblings().removeClass("bg");
+    })
+    //左按钮结束
+//右按钮
+    $(".jtRight").click(function(){
+//        clearInterval(timer);
+        a++;
+        if(a>9){
+            a = 0
+        }
+        $("#box .con ul li").eq(b).stop(true,true).animate({
+            left:"-1235px"
+        },1000)
+        $("#box .con ul li").eq(a).stop(true,true).css({
+            "left":"1235px"
+        })
+        $("#box .con ul li").eq(a).stop(true,true).animate({
+            left:"0px"
+        },1000)
+        b = a;
+        $("#box .nav .nav_pic ul li").eq(a).addClass("bg").siblings().removeClass("bg");
+    })
+    //右按钮结束
+
+
+    $("#box .nav .nav_pic ul li").hover(function(){
+        clearInterval(timer);
+        $(this).addClass("bg").siblings().removeClass("bg");
+        a = $(this).index();
+//        alert(a)
+        if(a>b){
+        $("#box .con ul li").eq(b).stop(true,true).animate({
+            left:"-1235px"
+        },500)
+        $("#box .con ul li").eq(a).stop(true,true).css({
+            "left":"1235px"
+        })
+        $("#box .con ul li").eq(a).stop(true,true).animate({
+            left:"0px"
+        },500)
+        b = a;
+        }
+        else if(a<b){
+            $("#box .con ul li").eq(b).stop(true,true).animate({
+                left:"1235px"
+            },500)
+            $("#box .con ul li").eq(a).stop(true,true).css({
+                "left":"-1235px"
+            })
+            $("#box .con ul li").eq(a).stop(true,true).animate({
+                left:"0px"
+            },500)
+            b = a;
+        }
+    },function(){
+    auto();
+    })
+
+    $(".jtLeft").hover(function(){
+        clearInterval(timer);
+    },function(){
+        auto();
+    })
+    $(".jtRight").hover(function(){
+        clearInterval(timer);
+    },function(){
+        auto();
+    })
+</script>
+</body>
+</html>

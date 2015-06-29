@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        img{
+            display: block;
+        }
+        #slider{
+            position: relative;
+            height: 281px;
+            width: 500px;
+            margin: 100px auto;
+            /*overflow: hidden;*/
+        }
+        #slider .imglist{
+            /*position: relative;*/
+            height: 281px;
+            width: 500px;
+            overflow: hidden;
+        }
+        #slider .imglist li{
+            list-style: none;
+            height: 281px;
+            width: 500px;
+            position: absolute;
+            top: 0px;
+            left: -500px;
+        }
+        #slider div.l-but,.r-but{
+            cursor: pointer;
+            width: 40px;
+            height: 281px;
+            position: absolute;
+            top: 0;
+            background: url("img/icon-slides.png") no-repeat;
+            display: none;
+        }
+        #slider:hover .l-but,#slider:hover .r-but{
+            display: block;
+        }
+        #slider .l-but:hover{
+            background-position: 0 center;
+        }
+        #slider .r-but:hover{
+            background-position: -43px center;
+        }
+        #slider div.l-but{
+            background-position: -85px center;
+            left: 0;
+        }
+        #slider div.r-but{
+            background-position: -123px center;
+            right: 0;
+        }
+        #slider ul.but{
+            width: 160px;
+            height: 20px;
+            position: absolute;
+            right: 15px;
+            bottom: 10px;
+            /*border: 1px solid blue;*/
+            z-index: 5;
+        }
+        #slider ul.but li{
+            list-style: none;
+            width: 28px;
+            height: 18px;
+            float: left;
+            font-size: 12px;
+            color: #fff;
+            line-height: 18px;
+            text-align: center;
+            background: rgba(0,0,0,0.3);
+            margin: 0 5px;
+            cursor:pointer;
+        }
+        #slider .but li.ych{
+            background: rgba(0,0,0,0.8);
+        }
+    </style>
+</head>
+<body>
+    <div id="slider">
+        <ul class="imglist">
+            <li style="left:0"><img src="img/1.jpg" alt=""/></li>
+            <li><img src="img/2.jpg" alt=""/></li>
+            <li><img src="img/3.jpg" alt=""/></li>
+            <li><img src="img/4.jpg" alt=""/></li>
+        </ul>
+        <div class="l-but"></div>
+        <div class="r-but"></div>
+        <!--右下按钮开始-->
+
+            <ul class="but">
+                <li class="ych">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+            </ul>
+
+        <!--右下按钮结束-->
+    </div>
+</body>
+<script type="text/javascript" src="js/jquery.js">
+
+</script>
+<script type="text/javascript">
+    var a = 0;
+    var b = 0;
+    var timer = null;
+   // 右按钮
+    $(".r-but").click(function(){
+        a++;
+        if(a>3){
+            a = 0;
+        }
+//        $("#slider .imglist li").css("left","0px");
+        $(".but li").eq(a).addClass("ych").siblings().removeClass("ych");
+        $("#slider .imglist li").eq(a).fadeIn().siblings().fadeOut();
+    });
+
+    //左按钮
+    $(".l-but").click(function(){
+
+        a--;
+        if(a<0){
+            a = 3
+        }
+//        $("#slider .imglist li").css("left","0px");
+        $(".but li").eq(a).addClass("ych").siblings().removeClass("ych");
+        $("#slider .imglist li").eq(a).fadeIn().siblings().fadeOut();
+    });
+
+
+
+//右下按钮序列号
+    $(".but li").click(function(){
+//        clearInterval(timer);
+        $(this).addClass("ych").siblings().removeClass("ych");
+        a = $(this).index();
+        if(a>b){
+        $("#slider .imglist li").eq(b).stop(true,true).animate({
+            left:"-500px"
+        },400);
+        $("#slider .imglist li").eq(a).stop(true,true).css("left","500px");
+        $("#slider .imglist li").eq(a).stop(true,true).animate({left:"0px"},400);
+            b = a;
+        }
+        else if(b>a){
+            $("#slider .imglist li").eq(b).stop(true,true).animate({
+                left:"500px"
+            },400);
+            $("#slider .imglist li").eq(a).stop(true,true).css("left","-500px");
+            $("#slider .imglist li").eq(a).stop(true,true).animate({left:"0px"},400);
+            b = a;
+        }
+    });
+
+//    自动轮播
+    function auto(){
+        timer = setInterval(function(){
+            a++;
+            if(a>3){
+                a = 0;
+            }
+            $("#slider .imglist li").css("left","0px");
+            $(".but li").eq(a).addClass("ych").siblings().removeClass("ych");
+            $("#slider .imglist li").eq(a).fadeIn().siblings().fadeOut();
+        },1500);
+    }
+    auto();
+
+
+
+
+//    进入图片暂停
+
+    $("#slider").hover(function(){
+        clearInterval(timer)
+    },function(){
+        auto();
+    })
+</script>
+</html>

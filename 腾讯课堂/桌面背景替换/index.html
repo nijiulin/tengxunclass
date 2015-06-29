@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/miaov.js"></script>
+    <!--<script src="bootstrap实例/bootstrap实例.bootstrap实例"></script>-->
+
+
+    <script>
+        window.onload = function() {
+            var odiv = document.getElementById("title");
+            var obg = document.getElementById("bg");
+            var oshe = document.getElementById("shej");
+            var oul = document.getElementById("oul");
+            var ali = oul.getElementsByTagName("li");
+            var spans = document.getElementById("spanone");
+            var spanst = document.getElementById("spantwo");
+            var timer = null;
+            var iNowUlLeft = 0;
+            odiv.onmousedown = function (ev) {
+                var oevent = ev || event;
+                var x = 0;
+                var y = 0;
+
+                x = oevent.clientX - obg.offsetLeft;
+                y = oevent.clientY - obg.offsetTop;
+                document.onmousemove = function (ev) {
+                    var oevent = ev || event;
+                    obg.style.left = oevent.clientX - x + "px";
+                    obg.style.top = oevent.clientY - y + "px";
+                };
+                document.onmouseup = function () {
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+                };
+                return false;
+            };
+        }
+    </script>
+    <link rel="stylesheet" href="css/css.css"/>
+</head>
+<body>
+<div id="bg">
+    <div class="title" id="title">
+    </div>
+    <p class="close">X</p>
+    <span class="spanone" id="spanone"></span>
+    <span class="spantwo" id="spantwo"></span>
+    <ul id="oul">
+        <li><img src="images/s_1.jpg" alt=""/></li>
+        <li><img src="images/s_2.jpg" alt=""/></li>
+        <li><img src="images/s_3.jpg" alt=""/></li>
+        <li><img src="images/s_4.jpg" alt=""/></li>
+        <li><img src="images/s_5.jpg" alt=""/></li>
+        <li><img src="images/s_6.jpg" alt=""/></li>
+        <li><img src="images/s_7.jpg" alt=""/></li>
+        <li><img src="images/s_8.jpg" alt=""/></li>
+        <li><img src="images/s_9.jpg" alt=""/></li>
+        <li><img src="images/s_10.jpg" alt=""/></li>
+        <li><img src="images/s_11.jpg" alt=""/></li>
+        <li><img src="images/s_12.jpg" alt=""/></li>
+        <li><img src="images/s_13.jpg" alt=""/></li>
+        <li><img src="images/s_14.jpg" alt=""/></li>
+        <li><img src="images/s_15.jpg" alt=""/></li>
+        <li><img src="images/s_16.jpg" alt=""/></li>
+    </ul>
+</div>
+<div id="menu">
+    <ul>
+        <li>11111111</li>
+        <li>12332323</li>
+        <li>aaaaaaaa</li>
+        <li>更换背景</li>
+        <li>bbbbbbbb</li>
+    </ul>
+</div>
+<!--<div id="shej">设置背景</div>-->
+<script type="text/javascript">
+
+    //禁止浏览器右键默认
+    document.oncontextmenu = function(){
+        return false;
+    };
+    $(document).mousedown(function(e){
+        var key = e.which;  //获取鼠标按键状态
+//        alert(key)
+        if(key == 3){
+            var _top = e.clientY;
+            var _left = e.clientX;
+            $("#menu").show().css({
+                left:_left,
+                top:_top
+            })
+        }
+    });
+    $(document).click(function(){
+        $("#menu").hide()
+    });
+
+    $("#menu ul li").mouseover(function(){
+        $(this).css({
+            "background":"blue",
+            "color":"#fff"
+        }).siblings().css({
+            "background":"#fff",
+            "color":"black"
+        })
+
+    });
+    $("#menu ul li").click(function(){
+        var _index = $(this).index();
+        if(_index == 3){
+            $("#bg").show();
+        }
+    });
+    var speed = 0;
+    $("#bg ul li").click(function(){
+        var bsrc = $(this).find("img").attr("src");
+        var bigsrc = bsrc.replace("s_","");
+        $("body").css("background-image","url("+bigsrc+")");
+    });
+//向左移动
+    $("#spanone").click(function(){
+        speed++;
+//        alert(speed)
+        if(speed<3){
+        $("#oul").animate({
+            left:-636*speed+"px"
+        },500)}else{
+            speed = 2;
+        }
+    });
+
+    //向右移动
+    $("#spantwo").click(function(){
+        speed--;
+//        alert(speed);
+        if(speed>=0){
+            $("#oul").animate({
+                left:-636*speed+"px"
+            },500)}else{
+            speed = 0;
+        }
+    });
+
+//    $("#shej").click(function(){
+//        $("#bg").show();
+//    });
+    $(".close").click(function(){
+        $("#bg").hide();
+    });
+    $("#bg").mouseover(function(){
+        $("span").show();
+    });
+    $("#bg").mouseout(function(){
+        $("span").hide();
+    });
+
+
+</script>
+</body>
+</html>

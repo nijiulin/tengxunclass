@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            background: url("pic/14.jpg") no-repeat;
+            background-size: 100% 100%;
+            min-height: 650px;
+        }
+        .mmd{
+            width: 900px;
+            height: 350px;
+            position: relative;
+            top: 120px;
+            margin: 0 auto;
+            background: url("pic/2.jpg") no-repeat;
+            overflow: hidden;
+        }
+        .mmd .showImg{
+            position: absolute;
+            top: 32px;
+            right: 58px;
+            width: 285px;
+            height: 285px;
+            border-radius: 12px;
+            overflow: hidden;
+            text-align: center;
+        }
+        .mmd .m_up{
+            position: absolute;
+            top: 212px;
+            left: 12px;
+            width: 355px;
+            height: 80px;
+            background: #fff;
+            padding: 10px;
+            border-radius: 6px;
+        }
+        .mmd .m_up .up{
+            width: 355px;
+            height: 80px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+        .mmd .m_up .up a{
+            float: left;
+            /*cursor: pointer;*/
+            display: block;
+            width: 80px;
+            height: 80px;
+            background: url("pic/2.jpg") -150px 0 no-repeat;
+            border-right: 1px solid #ccc;
+        }
+        .mmd .m_up .up a:hover{
+
+            opacity: 0.2;
+        }
+        .mmd .m_up .up a input{
+            width: 80px;
+            height: 80px;
+            opacity: 0;
+            cursor: pointer;
+        }
+        .mmd .m_up .up textarea{
+            width: 252px;
+            height: 58px;
+            border: 0px;
+            padding: 10px;
+
+        }
+    </style>
+    <script>
+    function onup(sender){
+        if(!sender.value.match(/.jpg|.png|.gif|.bmp/i)){
+            return false;
+        }
+        var file = document.getElementById("up_img");
+        var obj = document.getElementById("preview");
+        if(sender.files&&sender.files[0]){
+            obj.src = window.URL.createObjectURL(sender.files[0])
+        }
+    }
+    </script>
+</head>
+<body>
+<div class="mmd">
+    <div class="m_up">
+        <div class="up">
+            <a href="">
+                <input onchange="onup(this)" type="file" id="up_img"/>
+            </a>
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+        </div>
+    </div>
+    <div class="showImg"><img id="preview" height="285px" alt="你们好"/></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #showImg{
+            width: 100%;
+            height: 100%;
+            background: #996666;
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+        }
+        #showImg img{
+            opacity: 0;
+        }
+        #ImgList{
+            width: 570px;
+            height: 450px;
+            background: rgba(0,0,0,0.5);
+            position: absolute;
+            left: 400px;
+            top: 100px;
+        }
+        #ImgList .title{
+            /*border: 1px solid red;*/
+            width: 570px;
+            height: 45px;
+            color: #ffffff;
+            background: #000;
+            font-family: "微软雅黑";
+            line-height: 45px;
+            text-indent: 20px;
+            cursor: move;
+            /*float: right;*/
+        }
+        #ImgList img.close{
+            float: right;
+            margin-right: 10px;
+            margin-top: -34px;
+
+        }
+        /*#ImgList ul{*/
+            /*border: 1px solid red;*/
+            /*height: 340px;*/
+            /*margin-left: -30px;*/
+        /*}*/
+        #ImgList ul li{
+            list-style: none;
+            width: 150px;
+            height: 105px;
+            float: left;
+            margin: 10px 15px;
+            border: 5px solid #fff;
+            /*margin: 10px 10px;*/
+        }
+        #Button{
+            width: 100%;
+            height: 62px;
+            position: absolute;
+            bottom: 0px;
+            background: rgba(0,0,0,0.7);
+
+        }
+        #Button .but{
+            width: 200px;
+            height: 42px;
+            margin: 0 auto;
+            /*border: 1px solid blue;*/
+            padding-top: 20px;
+            padding-left: 20px;
+        }
+        #Button .but img{
+            margin-left: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div id="showImg">
+        <img src="img/1.jpg" alt=""/>
+    </div>
+    <div id="ImgList">
+            <div class="title" id="title">
+             图片相册
+
+             </div>
+        <img class="close" src="img/guan.gif" alt=""/>
+        <ul>
+            <li><img src="img/s_1.jpg" alt=""/></li>
+            <li><img src="img/s_2.jpg" alt=""/></li>
+            <li><img src="img/s_3.jpg" alt=""/></li>
+            <li><img src="img/s_4.jpg" alt=""/></li>
+            <li><img src="img/s_5.jpg" alt=""/></li>
+            <li><img src="img/s_6.jpg" alt=""/></li>
+            <li><img src="img/s_7.jpg" alt=""/></li>
+            <li><img src="img/s_8.jpg" alt=""/></li>
+            <li><img src="img/s_9.jpg" alt=""/></li>
+        </ul>
+    </div>
+<div id="Button">
+    <div class="but">
+        <img src="img/one.gif" alt="" class="album"/>
+        <img src="img/left.gif" alt="" class="back"/>
+        <img src="img/sidong.gif" alt="" class="play"/>
+        <img src="img/right.gif" alt="" class="forward"/>
+    </div>
+</div>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script>
+        /////////////////////////////////
+        //拖动图片列表
+        var odiv = document.getElementById("title");
+        var obg = document.getElementById("ImgList");
+        odiv.onmousedown = function (ev) {
+            var oevent = ev || event;
+            var x = 0;
+            var y = 0;
+
+            x = oevent.clientX - obg.offsetLeft;
+            y = oevent.clientY - obg.offsetTop;
+            document.onmousemove = function (ev) {
+                var oevent = ev || event;
+                obg.style.left = oevent.clientX - x + "px";
+                obg.style.top = oevent.clientY - y + "px";
+            };
+            document.onmouseup = function () {
+                document.onmousemove = null;
+                document.onmouseup = null;
+            };
+            return false;
+        };
+        /////////////////////////////////////////////
+//        $("#title").mousedown(function(ev){
+//            var oevent = ev || event;
+//            var x = 0;
+//            var y = 0;
+//            x = oevent.clientX - $("#ImgList").offsetLeft;
+//            y = oevent.clientY - $("#ImgList").offsetTop;
+//            $(document).mousemove(function(ev){
+//                var oevent = ev || event;
+//                $("#ImgList").css({
+//                    "left":"oevent.clientX - x + px",
+//                    "top":"oevent.clientY - y + px"
+//                });
+////                $("#ImgList").style.left = oevent.clientX - x + "px";
+////                $("#ImgList").style.top = oevent.clientY - y + "px";
+//            });
+//            $(document).mouseup(function(){
+//                $(document).mousemove = null;
+//                $(document).mouseup = null;
+//            })
+//            return false;
+//        })
+        /////////////////////////////////////////////
+
+        var simg = null;
+        var bimg = null;
+        var _index = 0;
+        var timer = null;
+        var flag = 1;
+        $("#showImg img").animate({
+            opacity:"1"
+        },500)
+        $("#ImgList ul li").click(function(){
+            simg = $(this).find("img").attr("src");
+            bimg = simg.replace("s_","");
+            $("#showImg img").attr("src",bimg).css({
+                "opacity":"0"
+            }).animate({
+                opacity:"1"
+            },500);
+            $("#ImgList").hide();
+        })
+
+        $("#Button .but img.album").click(function(){
+            $("#ImgList").show();
+        })
+
+        //关闭按钮
+        $("#ImgList img.close").click(function(){
+            $("#ImgList").hide();
+        })
+        //向右
+        $("#Button .but img.forward").click(function(){
+            flag = 1;
+            pauseplay();
+            clearInterval(timer);
+            _index++;
+            if(_index>8){
+                _index = 0
+            }
+            simg = $("#ImgList ul li").eq(_index).find("img").attr("src");
+            bimg = simg.replace("s_","");
+            $("#showImg img").attr("src",bimg).css({
+                "opacity":"0"
+            }).animate({
+                opacity:"1"
+            },500);
+        })
+
+        //向左
+        $("#Button .but img.back").click(function(){
+            flag = 1;
+            pauseplay();
+            clearInterval(timer);
+            _index--;
+            if(_index<0){
+                _index = 8
+            }
+            simg = $("#ImgList ul li").eq(_index).find("img").attr("src");
+            bimg = simg.replace("s_","");
+            $("#showImg img").attr("src",bimg).css({
+                "opacity":"0"
+            }).animate({
+                opacity:"1"
+            },500);
+        })
+        //自动轮播
+       function autoplay(){
+           timer = setInterval(function(){
+               _index++;
+               if(_index>8){
+                   _index = 0
+               }
+               simg = $("#ImgList ul li").eq(_index).find("img").attr("src");
+               bimg = simg.replace("s_","");
+               $("#showImg img").attr("src",bimg).css({
+                   "opacity":"0"
+               }).animate({
+                   opacity:"1"
+               },500);
+           },2000)
+       }
+        autoplay();
+
+        //暂停和播放
+        $("#Button .but img.play").click(function(){
+           pauseplay();
+        });
+        function pauseplay(){
+            if(flag == 1){
+                clearInterval(timer);
+                $("#Button .but img.play").attr("src","img/ting.gif");
+                flag = 0;//暂停状态
+            }else if(flag == 0){
+                autoplay();
+                $("#Button .but img.play").attr("src","img/sidong.gif");
+                flag = 1;
+            }
+        }
+    </script>
+</body>
+</html>

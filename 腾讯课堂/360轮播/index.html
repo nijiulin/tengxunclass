@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+         body{
+             background: url("img/bg.jpg");
+         }
+        .banner{
+            width: 730px;
+            height: 390px;
+            /*background-color: #66ffff;*/
+            margin: 150px auto;
+            overflow: hidden;
+            box-shadow: 0px 3px 30px #fff;
+            border-radius: 10px;
+        }
+        .pic{
+            width: 730px;
+            height: 5000px;
+            background: url("img/1.png");
+            margin-top: 12px;
+        }
+        .but{
+            width: 57px;
+            height: 300px;
+
+            position: fixed;
+            top: 200px;
+            right: 45px;
+        }
+        .but ul li{
+            list-style: none;
+            width: 60px;
+            height: 60px;
+
+            margin: 10px 0;
+            background: url("img/icon.jpg");
+        }
+        .but .l1{
+            background-position-y: 0px;
+        }
+        .but .l2{
+            background-position-y: -69px;
+        }
+        .but .l3{
+            background-position-y: -139px;
+        }
+        .but .l4{
+            background-position-y: 58px;
+        }
+    </style>
+</head>
+<body>
+<div class="banner">
+    <div class="pic">
+        
+    </div>
+    <div class="but">
+        <ul>
+            <li class="l1"></li>
+            <li class="l2"></li>
+            <li class="l3"></li>
+            <li class="l4"></li>
+        </ul>
+    </div>
+</div>
+<script src="js/jquery.js"></script>
+<script>
+     $(".but ul li").click(function(){
+         $(this).animate({"background-position-x":"-80px"},300).siblings().css(
+             "background-position-x","0px"
+         );
+         var index = $(this).index();
+         var Top = -390*index + "px";
+         $(".pic").stop(true).animate({"margin-top":Top},300)
+     })
+</script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body,div.bg{
+            height: 100%;
+        }
+        div.box1,div.box2,div.box3,div.box4{
+            width: 100%;
+            height: 100%;
+        }
+        div.box1{
+            background: url("img/1.jpg");
+        }
+        div.box2{
+            background: url("img/2.jpg");
+        }
+        div.box3{
+            background: url("img/3.jpg");
+        }
+        div.box4{
+            background: url("img/4.jpg");
+        }
+        div.l-nav{
+            width: 100px;
+            height: 270px;
+            position: fixed;
+            top: 25%;
+            left: 60px;
+            background: url("img/nav.png") no-repeat;
+            padding-top: 6px;
+        }
+        div.l-nav ul li{
+            line-height: 21px;
+            list-style: none;
+            color: #fff;
+            font-size: 12px;
+            padding-left: 50px;
+            margin-bottom: 56px;
+
+        }
+        div.l-nav ul li.on{
+            background: url("img/nav_cho.png") no-repeat;
+        }
+        div.top{
+            width: 100%;
+            height: 47px;
+            position: fixed;
+            top: 25px;
+        }
+        .header{
+            width: 900px;
+            height: 47px;
+
+            margin: 0 auto;
+        }
+        .nav{
+            width: 400px;
+            height: 47px;
+            float: right;
+
+            position: relative;
+
+        }
+        .nav ul{
+            height: 47px;
+        }
+        .nav ul li.txt{
+            list-style: none;
+            color: #fff;
+            font-size: 12px;
+            float: left;
+            margin-left: 52px;
+            line-height: 47px;
+            font-family: 'microsoft yahei';
+        }
+        .nav ul li a{
+            text-decoration: none;
+            color: #fff;
+        }
+        .logo{float: left}
+        .bor{
+            list-style: none;
+            width: 60px;
+            height: 32px;
+            border: 1px solid #6dff58;
+            border-radius: 17px;
+            position: absolute;
+            top: 6px;
+            left: 35px;
+        }
+    </style>
+</head>
+<body>
+<div class="top">
+    <div class="header">
+        <div class="logo"><img src="img/logo.png" alt=""/></div>
+        <div class="nav">
+            <ul>
+                <li class="txt"><a href="">首页</a></li>
+                <li class="txt"><a href="">常见问题</a></li>
+                <li class="txt"><a href="">论坛</a></li>
+                <li class="txt"><a href="">360首页&gt;&gt;</a></li>
+                <li class="bor"></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="bg">
+<div class="box1"></div>
+<div class="box2"></div>
+<div class="box3"></div>
+<div class="box4"></div>
+</div>
+
+<div class="l-nav">
+    <ul>
+        <li class="on">安全换机</li>
+        <li>无网对转</li>
+        <li>隐私粉粹</li>
+        <li>一键转换</li>
+    </ul>
+</div>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script>
+    $(".nav ul li.txt").hover(function(){
+        var l = $(this).position().left;
+        var w = $(this).width();
+        $(".nav ul li.bor").stop(true).animate({
+            left:l+35+"px",
+            width:32+w+"px"
+        },200)
+    });
+    $(".nav ul").mouseleave(function(){
+        $(".nav ul li.bor").stop(true).animate({
+            left:"35px",
+            width:"60px"
+        },200)
+    });
+    var wH = $(window).height();
+    $(document).scroll(function(){
+        sH = $(document).scrollTop();
+
+        var a = parseInt(sH/wH);
+        document.title = a +"+$(document).scrollTop()"+ sH +"+$(window).height()"+ wH ;
+        $(".l-nav ul li").eq(a).addClass("on").siblings().removeClass("on");
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: #000;
+        }
+        #pic{
+            width: 100%;
+            height: 230px;
+            /*background: #ffff99;*/
+            margin-top:150px;
+            position: relative;
+            -webkit-transform-style:preserve-3d;
+            -webkit-perspective:800px;
+        }
+        #pic img{
+            width:300px;
+            position: absolute;
+            -webkit-transition:2s;
+            -webkit-box-reflect:below 0 -webkit-linear-gradient(top,rgba(0,0,0,0.5),rgba(0,0,0,0.1));
+        }
+        #pic img:nth-child(1){
+            left: 100px;
+
+        }
+        #pic img:nth-child(2){
+            left: 300px;
+
+        }
+        #pic img:nth-child(3){
+            left: 500px;
+
+        }
+        #pic img:nth-child(4){
+            left: 700px;
+
+        }
+        #pic img:nth-child(5){
+            left: 900px;
+
+        }
+        #pic .left{
+
+            -webkit-transform:translateZ(-100px) rotateY(45deg)
+        }
+        #pic .now{
+            -webkit-transform:translateZ(100px)
+        }
+        #pic .right{
+
+            -webkit-transform:translateZ(-100px) rotateY(-45deg)
+        }
+    </style>
+</head>
+<body>
+<div id="pic">
+    <img class="left" src="img/1.jpg" alt=""/>
+    <img class="left" src="img/2.jpg" alt=""/>
+    <img class="now" src="img/3.jpg" alt=""/>
+    <img class="right" src="img/4.jpg" alt=""/>
+    <img class="right" src="img/5.jpg" alt=""/>
+</div>
+<script src="js/jquery.js"></script>
+<script>
+    var imgL = [];
+    var lIndex = 2;
+    for(var i=0;i<5;i++){
+        imgL[i] = parseInt($("img").eq(i).css("left"))
+    }
+//    alert(imgL)
+    $("#pic img").click(function(){
+        var nIndex = $("#pic img").index(this);
+        for(var i=0;i<5;i++){
+            imgL[i] = imgL[i]-200*(nIndex-lIndex);
+           $("img").eq(i).css("left",imgL[i] + 'px')
+        }
+        for(var i=0;i<nIndex;i++){
+           $("img").eq(i).removeClass().addClass("left")
+        }
+        for(var i=nIndex;i<5;i++){
+            $("img").eq(i).removeClass().addClass("right")
+        }
+        $(this).removeClass().addClass("now");
+        lIndex = nIndex;
+    })
+</script>
+</body>
+</html>

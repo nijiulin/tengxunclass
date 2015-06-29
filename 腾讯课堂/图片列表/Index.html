@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #imgList{
+            width: 990px;
+            height: 370px;
+            /*background: #990033;*/
+            margin: 100px auto 0px;
+            /*border: 1px solid red;*/
+        }
+        #imgList .box{
+            width: 330px;
+            height: 370px;
+            /*background: #ccccff;*/
+            /*border: 1px solid blue;*/
+            float: left;
+        }
+        #imgList .box .top{
+            position: relative;
+            width: 325px;
+            height: 244px;
+            /*background: #999933;*/
+            margin: 0px 4px 4px 0px;
+        }
+        #imgList .box .bottom{
+            width: 161px;
+            height: 120px;
+            /*background: #33cc66;*/
+            float: left;
+            margin: 0px 4px 0px 0px;
+            position: relative;
+        }
+        #imgList .box .common p{
+            background: rgba(0,0,0,0.5);
+            text-align: center;
+            width: 100%;
+            height: 0px;
+            padding-top: 0px;
+            position: absolute;
+            left: 0px;
+            bottom: 0px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+   <div id="imgList">
+       <div class="box">
+           <div class="top common">
+               <img src="images/pic1.jpg" alt=""/>
+               <p><img src="images/button.png" alt=""/></p>
+           </div>
+           <div class="bottom common">
+               <img src="images/pic4.jpg" alt=""/>
+               <p><img src="images/button.png" alt=""/></p>
+           </div>
+           <div class="bottom common">
+               <img src="images/pic5.jpg" alt=""/>
+               <p><img src="images/button.png" alt=""/></p>
+           </div>
+       </div>
+       <div class="box">
+           <div class="top common">
+               <img src="images/pic2.jpg" alt=""/>
+               <p><img src="images/button.png" alt=""/></p>
+           </div>
+           <div class="bottom common">
+               <img src="images/pic6.jpg" alt=""/>
+               <p><img src="images/button.png" alt=""/></p>
+           </div>
+           <div class="bottom common">
+               <img src="images/pic7.jpg" alt=""/>
+               <p><img src="images/button.png" alt=""/></p>
+           </div>
+       </div>
+       <div class="box">
+           <div class="top common">
+               <img src="images/pic3.jpg" alt=""/>
+               <p><img src="images/button.png" alt=""/></p>
+           </div>
+           <div class="bottom common">
+               <img src="images/pic8.jpg" alt=""/>
+               <p><img src="images/button.png" alt=""/></p>
+           </div>
+           <div class="bottom common">
+               <img src="images/pic9.jpg" alt=""/>
+               <p><img src="images/button.png" alt=""/></p>
+           </div>
+       </div>
+   </div>
+</body>
+<script src="js/jquery.js"></script>
+<script>
+   $("#imgList .box .common").hover(function(){
+       $(this).find("p").stop().animate({
+           height:"30px",
+           paddingTop:"7px"
+       },200)
+   },function(){
+       $(this).find("p").stop().animate({
+           height:"0px",
+           paddingTop:"0px"
+       },200)
+   })
+</script>
+</html>

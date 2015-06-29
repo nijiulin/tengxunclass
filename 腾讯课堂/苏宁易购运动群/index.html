@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font: 12px "微软雅黑";
+        }
+        #title{
+            width: 1190px;
+            height: 25px;
+            background: url("img/title.jpg") no-repeat;
+            margin: 10px auto;
+            /*border:1px solid blue;*/
+        }
+        #title h2{
+            border-bottom: 3px solid #222;
+            padding-left: 60px;
+            line-height: 25px;
+        }
+        .pane{
+            width: 1190px;
+            height: 550px;
+            background: url("img/1.jpg") no-repeat;
+            margin: 0 auto;
+            position: relative;
+            display: none;
+        }
+        .pane ul{
+            width: 925px;
+            position: absolute;
+            bottom: 40px;
+            right: 0px;
+            /*border:1px solid blue;*/
+        }
+        .pane ul li{
+            width: 200px;
+            float: left;
+            margin: 0px 15px;
+            background: rgba(0,0,0,0.4);
+            list-style-type: none;
+
+        }
+        .pane ul li img{
+            width: 200px;
+            height: 200px;
+        }
+        .pane ul li p{
+            height: 32px;
+            line-height: 32px;
+            border-top: 1px solid rgba(255,255,255,0.7);
+            color: #FFF;
+            font-size: 14px;
+            text-align: center;
+            background: rgba(0,0,0,0.7);
+        }
+        .banner{
+            width: 1190px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .nav{
+            position: absolute;
+            top: 40px;
+            left: -5px;
+            /*width: 400px;*/
+            /*height: 350px;*/
+            /*background: #663333;*/
+            z-index: 999;
+        }
+        .nav ul li{
+            list-style-type: none;
+            width: 145px;
+            height: 40px;
+            background: url("img/sports.png") no-repeat -125px 0;
+            margin: 5px 0;
+            color: #FFF;
+            transition:all 500ms;
+            overflow: hidden;
+            cursor:pointer;
+        }
+        .nav ul li.current{
+            width: 245px;
+            background-position: 0px -41px;
+        }
+
+        .nav ul li .bar{
+            display: block;
+            background: #23C6C3;
+            width: 5px;
+            height: 40px;
+            float: left;
+        }
+        .nav ul li h2{
+            float: left;
+            line-height: 40px;
+            padding: 0px 10px;
+        }
+        .nav ul li p{
+            transform:translateX(200px) translateY(-50px);
+            transition:all 500ms;
+        }
+        .nav ul li.current p{
+            transform:translateX(10px) translateY(20px);
+        }
+        .main .bg1{
+            background: url("img/1.jpg") no-repeat;
+        }
+        .main .bg2{
+            background: url("img/2.jpg") no-repeat;
+        }
+        .main .bg3{
+            background: url("img/3.jpg") no-repeat;
+        }
+        .main .bg4{
+            background: url("img/4.jpg") no-repeat;
+        }
+    </style>
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            jQuery.jqtab = function(button,content,shijian){
+                $(content).find(".pane:first").show(); //第一个区域显示
+                $(button).find("li:first").addClass("current"); //第一个导航添加样式
+                $(button).find("li").bind(shijian,function(){
+                    $(this).addClass("current").siblings().removeClass("current");//为自已添加样式，兄弟姐妹去除样式；
+                    var n = $(button).find("li").index(this); //获得第几个元素
+                    $(content).children().eq(n).show().siblings().hide();//查找第几个元素显示，其它隐藏
+
+                })
+
+            };
+            //调用方法 jqtab
+            $.jqtab(".nav",".main","mouseenter")
+        });
+    </script>
+</head>
+<body>
+   <div id="title">
+       <h2>运动会</h2>
+   </div>
+   <div class="banner">
+   <!--侧边导航-->
+   <div class="nav">
+       <ul>
+           <li class="">
+               <span class="bar"></span>
+               <h2>巴萨专区</h2>
+               <p>球星邀你动起来&gt;</p>
+           </li>
+           <li><span class="bar"></span> <h2>瑜伽</h2>
+               <p>瘦身伴侣&gt;</p></li>
+           <li><span class="bar"></span> <h2>健身</h2>
+               <p>轻慢跑动&gt;</p></li>
+           <li><span class="bar"></span> <h2>登山</h2>
+               <p>邀你户外&gt;</p></li>
+       </ul>
+   </div>
+   <!--侧边导航结束-->
+   </div>
+
+   <div class="main">
+
+   <div class="pane bg1">
+       <ul>
+           <li>
+               <img src="img/1.png" alt=""/>
+               <p>sjlfdjsfkjsldfj</p>
+           </li>
+           <li>
+               <img src="img/2.png" alt=""/>
+               <p>sjlfdjsfkjsldfj</p>
+           </li>
+           <li>
+               <img src="img/3.png" alt=""/>
+               <p>sjlfdjsfkjsldfj</p>
+           </li>
+           <li>
+               <img src="img/4.png" alt=""/>
+               <p>sjlfdjsfkjsldfj</p>
+           </li>
+       </ul>
+   </div>
+       <div class="pane bg2">
+           <ul>
+               <li>
+                   <img src="img/5.png" alt=""/>
+                   <p>sjlfdjsfkjsldfj</p>
+               </li>
+               <li>
+                   <img src="img/6.png" alt=""/>
+                   <p>sjlfdjsfkjsldfj</p>
+               </li>
+               <li>
+                   <img src="img/7.png" alt=""/>
+                   <p>sjlfdjsfkjsldfj</p>
+               </li>
+               <li>
+                   <img src="img/8.png" alt=""/>
+                   <p>sjlfdjsfkjsldfj</p>
+               </li>
+           </ul>
+       </div>
+       <div class="pane bg3">
+           <ul>
+               <li>
+                   <img src="img/9.png" alt=""/>
+                   <p>sjlfdjsfkjsldfj</p>
+               </li>
+               <li>
+                   <img src="img/10.png" alt=""/>
+                   <p>sjlfdjsfkjsldfj</p>
+               </li>
+               <li>
+                   <img src="img/11.png" alt=""/>
+                   <p>sjlfdjsfkjsldfj</p>
+               </li>
+               <li>
+                   <img src="img/12.png" alt=""/>
+                   <p>sjlfdjsfkjsldfj</p>
+               </li>
+           </ul>
+       </div>
+       <div class="pane bg4">
+           <ul>
+               <li>
+                   <img src="img/13.png" alt=""/>
+                   <p>sjlfdjsfkjsldfj</p>
+               </li>
+               <li>
+                   <img src="img/14.png" alt=""/>
+                   <p>sjlfdjsfkjsldfj</p>
+               </li>
+               <li>
+                   <img src="img/15.png" alt=""/>
+                   <p>sjlfdjsfkjsldfj</p>
+               </li>
+               <li>
+                   <img src="img/16.png" alt=""/>
+                   <p>sjlfdjsfkjsldfj</p>
+               </li>
+           </ul>
+       </div>
+   </div>
+</body>
+</html>

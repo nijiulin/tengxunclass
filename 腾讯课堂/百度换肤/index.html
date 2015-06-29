@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: url("images/1.jpg");
+        }
+        #huanfu{
+            width: 100%;
+            height: 200px;
+            background: #fff;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+        #huanfu #imgList{
+
+            width: 600px;
+            height: 185px;
+            /*background: #ff3300;*/
+            margin: 0 auto;
+        }
+        #huanfu #imgList .box1{
+            width: 196px;
+            height: 185px;
+            /*background: #669900;*/
+            float: left;
+        }
+        #huanfu #imgList .box2{
+            width: 98px;
+            height: 185px;
+            /*background: #99ff33;*/
+            float: left;
+        }
+        #huanfu #imgList a{
+            position: relative;
+            float: left;
+            margin-bottom: -2px;
+            margin-right: 1px;
+        }
+        #huanfu #imgList .small{
+           position: absolute;
+           bottom: 4px;
+            right: 5px;
+        }
+        #huanfu #imgList a:hover img{
+            opacity: 0.7;
+            -moz-opacity: 0.7;
+            filter:Alpha(opacity=70);
+        }
+       .small{
+           width: 18px;
+           height: 22px;
+           display: none;
+           /*border: 2px solid red;*/
+           background: url("images/skin.png") no-repeat;
+       }
+    </style>
+</head>
+<body>
+<span class="but">换肤</span>
+    <div id="huanfu">
+        <div id="imgList">
+            <div class="box1">
+                <a href="#">
+                    <img src="images/1-1.jpg" width="195" height="119" alt=""/>
+                    <div style="display: block" class="small"></div>
+                </a>
+                <a href="#">
+                    <img src="images/2-2.jpg" width="97" height="59" alt=""/>
+                    <div class="small"></div>
+                </a>
+                <a href="#">
+                    <img src="images/3-3.jpg" width="97" height="59" alt=""/>
+                    <div class="small"></div>
+                </a>
+            </div>
+            <div class="box2">
+                <a href="#">
+                    <img src="images/4-4.jpg" width="97" height="59" alt=""/>
+                    <div class="small"></div>
+                    
+                </a>
+                <a href="#">
+                    <img src="images/5-5.jpg" width="97" height="59" alt=""/>
+                    <div class="small"></div>
+                </a>
+                <a href="#">
+                    <img src="images/6-6.jpg" width="97" height="59" alt=""/>
+                    <div class="small"></div>
+                </a>
+            </div>
+            <div class="box1">
+
+                <a href="#">
+                    <img src="images/7-7.jpg" width="97" height="59" alt=""/>
+                    <div class="small"></div>
+                </a>
+                <a href="#">
+                    <img src="images/8-8.jpg" width="97" height="59" alt=""/>
+                    <div class="small"></div>
+                </a>
+                <a href="#">
+                    <img src="images/9-9.jpg" width="195" height="119" alt=""/>
+                    <div class="small"></div>
+                </a>
+            </div>
+            <div class="box2">
+                <a href="#">
+                    <img src="images/10-10.jpg" width="97" height="59" alt=""/>
+                    <div class="small"></div>
+                </a>
+                <a href="#">
+                    <img src="images/11-11.jpg" width="97" height="59" alt=""/>
+                    <div class="small"></div>
+                </a>
+                <a href="#">
+                    <img src="images/12-12.jpg" width="97" height="59" alt=""/>
+                    <div class="small"></div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script>
+        var aBtn = document.getElementsByTagName("img");
+         var aDiv = document.getElementsByClassName("small");
+//        alert(aDiv)
+           $(".but").click(function(e){
+               $("#huanfu").slideToggle("slow");
+               e.stopPropagation();//阻止事件
+           });
+        $("#huanfu #imgList img").click(function(e){
+            var simg = $(this).attr("src");
+            var bing = simg.replace(/-\d*/,"");
+
+            $("body").css({
+                "background":"url("+bing+")"
+            });
+            e.stopPropagation();
+        });
+           $(document).click(function(){
+               $("#huanfu").slideUp("slow");
+           });
+
+
+
+           for(i=0;i<aBtn.length;i++)
+           {
+               aBtn[i].index=i;
+               aBtn[i].onclick=function ()
+               {
+                   for(i=0;i<aBtn.length;i++)
+                   {
+//                       aBtn[i].className='';
+                       aDiv[i].style.display='none';
+                   }
+//                   this.className='active';
+                   aDiv[this.index].style.display='block';
+               };
+           }
+    </script>
+</body>
+</html>

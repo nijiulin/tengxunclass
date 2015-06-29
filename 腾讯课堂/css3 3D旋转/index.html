@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: url("img/14.jpg");
+        }
+        #products{
+            width: 980px;
+            margin: 30px 40px 0px 0px;
+            float: right;
+            perspective:800px;
+            perspective-origin:50% 100px;
+
+        }
+        #products .flowers{
+            width: 240px;
+            height: 320px;
+            margin: 20px;
+            float: right;
+            transform-style:preserve-3D;
+            perspective-origin:50%;
+            position: relative;
+            -webkit-animation:slide 10s infinite linear;
+        }
+        #products .flowers ul li{
+            box-shadow: 1px 1px 3px #000;
+            list-style: none;
+            width: 230px;
+            height: 320px;
+            position: absolute;
+        }
+        #products .flowers:nth-child(1){
+            -webkit-animation-delay:2s;
+        }
+        #products .flowers:nth-child(2){
+            -webkit-animation-delay:5s;
+        }
+        #products .flowers:nth-child(3){
+            -webkit-animation-delay:8s;
+        }
+        #products .flowers ul li:nth-child(1){
+            -webkit-transform:rotateY(0deg) translateZ(68px);
+        }
+        #products .flowers ul li:nth-child(2){
+            -webkit-transform:rotateY(-120deg) translateZ(65px);
+        }
+        #products .flowers ul li:nth-child(3){
+            -webkit-transform:rotateY(120deg) translateZ(65px);
+        }
+        @-webkit-keyframes slide{
+            0%{
+                transform:rotateY(0deg);
+            }
+            30%{
+                transform:rotateY(-120deg);
+            }
+            31%{
+                transform:rotateY(-120deg);
+            }
+            60%{
+                transform:rotateY(-240deg);
+            }
+            61%{
+                transform:rotateY(-240deg);
+            }
+            90%{
+                transform:rotateY(-360deg);
+            }
+            100%{
+                transform:rotateY(-360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+  <div id="products">
+      <div class="flowers">
+          <ul>
+              <li><img src="images/11.jpg" alt=""/></li>
+              <li><img src="images/12.jpg" alt=""/></li>
+              <li><img src="images/13.jpg" alt=""/></li>
+          </ul>
+      </div>
+      <div class="flowers">
+          <ul>
+              <li><img src="images/14.jpg" alt=""/></li>
+              <li><img src="images/15.jpg" alt=""/></li>
+              <li><img src="images/16.jpg" alt=""/></li>
+          </ul>
+      </div>
+      <div class="flowers">
+          <ul>
+              <li><img src="images/17.jpg" alt=""/></li>
+              <li><img src="images/18.jpg" alt=""/></li>
+              <li><img src="images/19.jpg" alt=""/></li>
+          </ul>
+      </div>
+  </div>
+</body>
+</html>

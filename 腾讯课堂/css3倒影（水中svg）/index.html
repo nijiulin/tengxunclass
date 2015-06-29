@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        /*谷歌不支持*/
+       *{
+           margin: 0;
+           padding: 0;
+       }
+        body{
+            height: 100%;
+            background: url("images/7.jpg") 100% center;
+        }
+        #main{
+            width: 720px;
+            height: 350px;
+            position: fixed;
+            top: 120px;
+            left: -30px;
+           /*opacity: 0.4;*/
+            /*overflow: hidden;*/
+
+        }
+       #main div.box{
+           width: 720px;
+           height: 200px;
+           overflow: hidden;
+           background: #fff;
+           position: relative;
+       }
+       #main div.box1{
+           width: 720px;
+           height: 200px;
+           overflow: hidden;
+           background: #fff;
+           position: relative;
+           transform:rotateX(-115deg) skew(-5deg,180deg);
+           top: -46px;
+           left: 9px;
+           /*transform:translateY(-33px) skew(-8deg,180deg) scaleY(0.4);*/
+           /*transform:scale(0.5)*/
+           opacity: 0.4;
+           /*left: 30px;*/
+       }
+       #main ul{
+           width: 1920px;
+           position: absolute;
+           left: 0;
+           top: 0;
+           animation:slide 12s linear infinite;
+       }
+        #main ul li{
+            width: 240px;
+            height: 160px;
+            float: left;
+            list-style-type: none;
+            margin: 20px 5px;
+            animation:slide 12s linear infinite;
+        }
+        svg{
+            position: absolute;
+            left: -800px;
+            top: 3px;
+            animation:slide 7s linear infinite;
+        }
+         svg line.top{
+            stroke-width:27px;
+        }
+        svg line.bottom{
+           stroke-width:14px;
+       }
+         svg line{
+           stroke:#20252b;
+           stroke-dasharray:15 20;
+           fill:none;
+       }
+        @keyframes slide{
+            from{left:0px;}
+            to{left:-800px;}
+        }
+       @keyframes slide2{
+           from{left:-800px;}
+           to{left:0px;}
+       }
+    </style>
+</head>
+<body>
+  <div id="main">
+      <div class="box">
+      <ul>
+          <li><img src="images/8.jpg" alt=""/></li>
+          <li><img src="images/9.jpg" alt=""/></li>
+          <li><img src="images/10.jpg" alt=""/></li>
+          <li><img src="images/14.jpg" alt=""/></li>
+          <li><img src="images/s_10.jpg" alt=""/></li>
+          <li><img src="images/s_11.jpg" alt=""/></li>
+      </ul>
+          <svg xmlns="http://www.w3.org/2000/svg" width="300%" height="100%">
+              <line class="top" x1="0" y1="0" x2="1900" y2="0"></line>
+              <line class="bottom" x1="0" y1="188" x2="1900" y2="188"></line>
+
+          </svg>
+  </div>
+      <div class="box1">
+          <ul>
+              <li><img src="images/8.jpg" alt=""/></li>
+              <li><img src="images/9.jpg" alt=""/></li>
+              <li><img src="images/10.jpg" alt=""/></li>
+              <li><img src="images/14.jpg" alt=""/></li>
+              <li><img src="images/s_10.jpg" alt=""/></li>
+              <li><img src="images/s_11.jpg" alt=""/></li>
+          </ul>
+          <svg xmlns="http://www.w3.org/2000/svg" width="300%" height="100%">
+              <line class="top" x1="0" y1="0" x2="1900" y2="0"></line>
+              <line class="bottom" x1="0" y1="188" x2="1900" y2="188"></line>
+
+          </svg>
+      </div>
+  </div>
+</body>
+</html>

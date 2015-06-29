@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-image: url("images/bg.jpg");
+        }
+        #jiugongge{
+            width: 906px;
+            height: 486px;
+            background-color: #cc66ff;
+            margin: 45px auto 0px;
+            border: 5px solid #fff;
+        }
+        #jiugongge ul li{
+            position: relative;
+            width: 300px;
+            height: 160px;
+            border: 1px solid #fff;
+            list-style: none;
+            float: left;
+        }
+        #jiugongge ul li a{
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 300px;
+            height: 160px;
+            background: rgba(0,0,0,0.7);
+            font-size: 20px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            line-height: 160px;
+            font-family: "微软雅黑";
+            /*display: none;*/
+            z-index: 10;
+        }
+        #jiugongge ul li img.top{
+            position: absolute;
+            left: 0px;
+            /*top: -160px;*/
+            top: 0px;
+            /*z-index: 30;*/
+        }
+        #jiugongge ul li img.right{
+            position: absolute;
+            /*left: 302px;*/
+            left: 0;
+            top: 0px;
+            /*z-index: 30;*/
+        }
+        #jiugongge ul li img.bottom{
+            position: absolute;
+            left: 0px;
+            /*top: 162px;*/
+            top: 0;
+            /*z-index: 30;*/
+        }
+        #jiugongge ul li img.left{
+            position: absolute;
+            /*left: -302px;*/
+            left: 0px;
+            top: 0px;
+            /*z-index: 30;*/
+        }
+        #jiugongge ul li img.default{
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            z-index: 20;
+        }
+    </style>
+</head>
+<body>
+  <div id="jiugongge">
+      <ul>
+          <li>
+              <img class="default" src="images/img1.png" alt=""/>
+              <a href="#">SEO课程</a>
+              <img class="right" src="images/seor.jpg" alt=""/>
+              <img class="bottom" src="images/seob.jpg" alt=""/>
+          </li>
+          <li>
+              <img class="default" src="images/img2.png" alt=""/>
+              <a href="#">淘宝美工</a>
+              <img class="right" src="images/taor.jpg" alt=""/>
+              <img class="bottom" src="images/taob.jpg" alt=""/>
+              <img class="left" src="images/taol.jpg" alt=""/>
+          </li>
+          <li>
+              <img class="default" class="default" src="images/img3.png" alt=""/>
+              <a href="#">影视制作</a>
+              <img class="bottom" src="images/syb.jpg" alt=""/>
+              <img class="left" src="images/syl.jpg" alt=""/>
+          </li>
+          <li>
+              <img class="default" src="images/img4.png" alt=""/>
+              <a href="#">软件编程</a>
+              <img class="top" src="images/wt.jpg" alt=""/>
+              <img class="right" src="images/wr.jpg" alt=""/>
+              <img class="bottom" src="images/wb.jpg" alt=""/>
+
+          </li>
+          <li>
+              <img class="default" src="images/img5.png" alt=""/>
+              <a href="#">网页制作</a>
+              <img class="top" src="images/wt.jpg" alt=""/>
+              <img class="right" src="images/wr.jpg" alt=""/>
+              <img class="bottom" src="images/wb.jpg" alt=""/>
+              <img class="left" src="images/wl.jpg" alt=""/>
+          </li>
+          <li>
+              <img class="default" src="images/img6.png" alt=""/>
+              <a href="#">平面设计课</a>
+              <img class="top" src="images/pt.png" alt=""/>
+              <img class="bottom" src="images/pb.jpg" alt=""/>
+              <img class="left" src="images/pl.jpg" alt=""/>
+          </li>
+          <li>
+              <img class="default" src="images/img7.png" alt=""/>
+              <a href="#">淘宝运营课</a>
+              <img class="top" src="images/wt.jpg" alt=""/>
+              <img class="right" src="images/wr.jpg" alt=""/>
+          </li>
+          <li>
+              <img class="default" src="images/img8.png" alt=""/>
+              <a href="#">室内设计课</a>
+              <img class="top" src="images/snt.jpg" alt=""/>
+              <img class="right" src="images/snr.jpg" alt=""/>
+              <img class="left" src="images/snl.jpg" alt=""/>
+          </li>
+          <li>
+              <img class="default" src="images/img9.png" alt=""/>
+              <a href="#">网络营销课</a>
+              <img class="top" src="images/wll.jpg" alt=""/>
+              <img class="left" src="images/wlt.jpg" alt=""/>
+          </li>
+      </ul>
+  </div>
+  <script src="js/jquery.js"></script>
+  <script>
+          $("#jiugongge ul li").hover(function(){
+              $(this).find("a").css({
+                  "z-index":"30"
+              });
+              $(this).css({
+                  "z-index":"30"
+              }).siblings().css({
+                  "z-index":"10"
+              });
+              $(this).find("img.top").animate({
+                  top:"-162px"
+              },300);
+              $(this).find("img.right").animate({
+                  left:"302px"
+              },300);
+              $(this).find("img.bottom").animate({
+                  top:"162px"
+              },300);
+              $(this).find("img.left").animate({
+                  left:"-302px"
+              },300)
+          },function(){
+              $(this).find("a").css({
+                  "z-index":"10"
+              });
+              $(this).find("img").animate({
+                  left:"0px",
+                  top:"0px"
+              },300);
+          })
+  </script>
+</body>
+</html>

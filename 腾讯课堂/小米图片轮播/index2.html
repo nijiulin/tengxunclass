@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            height: 281px;
+            width: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+        /*img{*/
+            /*display: block;*/
+        /*}*/
+        #box .con{
+            height: 281px;
+            width: 500px;
+            background: #9cf;
+            position: relative;
+            overflow: hidden;
+        }
+        #box .con ul li{
+            height: 281px;
+            width: 500px;
+            list-style: none;
+            position: absolute;
+            left: -500px;
+            top: 0;
+        }
+        #box .but{
+            width: 160px;
+            height: 20px;
+            position: absolute;
+            right: 15px;
+            bottom: 10px;
+            /*z-index: 5;*/
+        }
+        #box ul.but li{
+            list-style: none;
+            width: 28px;
+            height: 18px;
+            float: left;
+            font-size: 12px;
+            color: #fff;
+            line-height: 18px;
+            text-align: center;
+            background: rgba(0,0,0,0.3);
+            margin: 0 5px;
+            cursor:pointer;
+        }
+        #box .but li.ych{
+            background: rgba(0,0,0,0.8);
+        }
+        #box .l-but,.r-but{
+            cursor: pointer;
+            width: 40px;
+            height: 281px;
+            position: absolute;
+            top: 0;
+            background: url("img/icon-slides.png") no-repeat;
+            display: none;
+            z-index: 4;
+        }
+        #box:hover .l-but{
+            display: block;
+        }
+        #box:hover .r-but{
+            display: block;
+        }
+        #box .l-but:hover{
+            background-position: 0 center;
+        }
+        #box .r-but:hover{
+            background-position: -43px center;
+        }
+        #box div.l-but{
+            background-position: -85px center;
+            left: 0;
+        }
+        #box div.r-but{
+            background-position: -123px center;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div class="l-but"></div>
+    <div class="r-but"></div>
+    <div class="con">
+        <ul>
+            <li style="left: 0">
+                <img src="img/1.jpg" alt=""/>
+            </li>
+            <li>
+                <img src="img/2.jpg" alt=""/>
+            </li>
+            <li>
+                <img src="img/3.jpg" alt=""/>
+            </li>
+            <li>
+                <img src="img/4.jpg" alt=""/>
+            </li>
+        </ul>
+    </div>
+    <ul class="but">
+        <li class="ych">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</div>
+<script src="js/jquery.js"></script>
+<script>
+    var a = 0;
+    var b = 0;
+    var timer = null;
+    //自动轮播
+    function auto(){
+        timer = setInterval(function(){
+            a++;
+            if(a>3){
+                a = 0
+            }
+            $("#box .con ul li").css("left","0px","display","block");
+            $("#box .but li").eq(a).addClass("ych").siblings().removeClass("ych");
+            $("#box .con ul li").eq(a).fadeIn().siblings().fadeOut();
+        },2000)
+    }
+    auto();
+    //自动轮播结束
+
+    //鼠标移入序列号中
+    $("#box .but li").hover(function(){
+        clearInterval(timer);
+        $(this).addClass("ych").siblings().removeClass("ych");
+        a = $(this).index();
+        if(a>b){
+            $("#box .con ul li").eq(b).stop(true,true).animate({
+                left:"-500px"
+            },500)
+            $("#box .con ul li").eq(a).stop(true,true).css({
+                "display":"block",
+                "left":"500px"
+            })
+            $("#box .con ul li").eq(a).stop(true,true).animate({
+                left:"0px"
+            },500)
+            b = a;
+        }
+        else if(a<b){
+            $("#box .con ul li").eq(b).stop(true,true).animate({
+                left:"500px"
+            },500)
+            $("#box .con ul li").eq(a).stop(true,true).css({
+                "display":"block",
+                "left":"-500px"
+            })
+            $("#box .con ul li").eq(a).stop(true,true).animate({
+                left:"0px"
+            },500)
+            b = a;
+        }
+    },function(){
+        auto();
+    });
+
+
+    //    进入图片暂停
+    $("#box").hover(function(){
+        clearInterval(timer)
+    },function(){
+        auto();
+    })
+</script>
+</body>
+</html>

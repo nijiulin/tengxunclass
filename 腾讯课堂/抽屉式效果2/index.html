@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #bg{
+            width: 100%;
+            height: 954px;
+            background: url("img/bg.jpg") center;
+        }
+        #bg #con{
+            width: 1093px;
+            height: 430px;
+            /*border: 1px solid red;*/
+            margin: 0 auto;
+            padding-top: 170px;
+        }
+        #bg #con #pic1,#bg #con #pic2,#bg #con #pic3,#bg #con #pic4{
+            /*width: 789px;*/
+            width: 100px;
+            height: 429px;
+            /*border: 1px solid #0f0;*/
+            float: left;
+        }
+        #bg #con #pic1{
+            background: url("img/1.jpg");
+        }
+        #bg #con #pic2{
+            background: url("img/2.jpg");
+        }
+        #bg #con #pic3{
+            background: url("img/3.jpg");
+        }
+        #bg #con #pic4{
+            background: url("img/4.jpg");
+            width: 789px;
+        }
+        #bg #con .txt{
+            width: 100px;
+            height: 429px;
+            background: rgba(0,0,0,0.5);
+            filter:alpha(opacity=50);
+            color: #fff;
+            font-family: "微软雅黑";
+            line-height: 13px;
+        }
+        #bg #con .txt p.p1{
+            width: 12px;
+            font-size: 12px;
+            float: left;
+            margin: 20px 17px 0;
+        }
+        #bg #con .txt p.p2{
+            font-size: 14px;
+            width: 16px;
+            font-weight: 700;
+            float: left;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+  <div id="bg">
+      <div id="con">
+          <!--111111111111-->
+          <div id="pic1" class="pic">
+              <div class="txt">
+                   <p class="p1">作者：默默的墨墨</p>
+                   <p class="p2">我的个人拉萨之旅  | | 故事之</p>
+              </div>
+          </div>
+          <div id="pic2" class="pic">
+              <div class="txt">
+                  <p class="p1">作者：默默的墨墨</p>
+                  <p class="p2">我的个人拉萨之旅  | | 故事之</p>
+              </div>
+          </div>
+          <div id="pic3" class="pic">
+              <div class="txt">
+                  <p class="p1">作者：默默的墨墨</p>
+                  <p class="p2">我的个人拉萨之旅  | | 故事之</p>
+              </div>
+          </div>
+          <div id="pic4" class="pic">
+              <div class="txt">
+                  <p class="p1">作者：默默的墨墨</p>
+                  <p class="p2">我的个人拉萨之旅  | | 故事之</p>
+              </div>
+          </div>
+      </div>
+  </div>
+  <script src="js/jquery.js"></script>
+  <script>
+      $(".pic").hover(function(){
+          $(this).stop(true).animate({
+              width:"789px"
+          },1000).siblings().stop(true).animate({
+              width:"100px"
+          },1000);
+//          $("#pic4").animate({
+//              width:"100px"
+//          },1000)
+
+      })
+  </script>
+</body>
+</html>

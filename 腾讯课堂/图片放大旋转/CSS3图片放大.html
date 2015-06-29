@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .main{
+            width: 300px;
+            height: 300px;
+            border:1px solid blue;
+            position: relative;
+            left: 120px;
+            top: 230px;
+        }
+        .one{
+            width: 50px;
+            height: 150px;
+            /*border: 1px solid red;*/
+            background-color: red;
+            position: absolute;
+           left: 0;
+            top: 0;
+        }
+        .two{
+            width: 50px;
+            height: 150px;
+            /*border: 1px solid red;*/
+            background-color: yellow;
+            position: absolute;
+            left: 0;
+            top: 150px;
+        }
+        .three{
+            width: 250px;
+            height: 300px;
+            /*border: 1px solid red;*/
+            background-color: #60ff2f;
+            /*float: left;*/
+            position: absolute;
+            right: 0;
+            top: 0;
+
+        }
+        .one:hover{
+            z-index: 3;
+            -webkit-transform:scale(3.5);
+            -webkit-transition:transform 1s;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="one"></div>
+    <div class="two"></div>
+    <div class="three"></div>
+</div>
+</body>
+</html>

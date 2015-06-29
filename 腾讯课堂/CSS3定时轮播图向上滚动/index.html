@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #top{
+            width: 100%;
+            height: 77px;
+            background: #3e2b24;
+            padding: 20px 0px;
+            text-align: center;
+        }
+        #nav{
+            width: 100%;
+            height: 50px;
+            background: url("img/bg.jpg");
+        }
+        #nav ul{
+            width: 980px;
+            margin: 0 auto;
+        }
+        #nav ul li{
+            list-style: none;
+            width: 136px;
+            height: 50px;
+            color: #FFFFFF;
+            float: left;
+            line-height: 50px;
+            text-align: center;
+            font-family: "微软雅黑";
+        }
+        #nav ul li:hover{
+            background: url("img/hover.jpg");
+            cursor:pointer;
+        }
+        #banner{
+            width: 100%;
+            height: 450px;
+            overflow: hidden;
+            box-shadow: 3px 3px 6px #666666;
+            margin-bottom: 100px;
+            position: relative;
+        }
+        #banner .cont{
+            width: 100%;
+            position: absolute;
+            top: 0px;
+            animation:banner 15s linear infinite;
+        }
+        #banner .cont li{
+            /*background: url("img/1.jpg") center;*/
+            width: 100%;
+            height: 450px;
+        }
+        #banner .cont li:nth-child(1){
+            background: url("img/1.jpg") center;
+        }
+        #banner .cont li:nth-child(2){
+            background: url("img/2.jpg") center;
+        }
+        #banner .cont li:nth-child(3){
+            background: url("img/3.jpg") center;
+        }
+        #banner .cont li:nth-child(4){
+            background: url("img/4.jpg") center;
+        }
+        #banner .cont li:nth-child(5){
+            background: url("img/5.jpg") center;
+        }
+        @keyframes banner{
+            0%{top: 0px}
+            19%{top: 0px}
+            20%{top: -450px}
+            39%{top: -450px}
+            40%{top: -900px}
+            59%{top: -900px}
+            60%{top: -1350px}
+            79%{top: -1350px}
+            80%{top: -1800px}
+            99%{top: -1800px}
+            100%{top: 0px}
+        }
+        #banner .in{
+            width: 300px;
+            height: 10px;
+            position: absolute;
+            right: 60px;
+            bottom: 30px;
+            /*background: #ffffff;*/
+
+        }
+        #banner .in li{
+            list-style: none;
+            width: 50px;
+            height: 10px;
+            color: #FFFFFF;
+            float: left;
+            background: rgba(0,0,0,0.3);
+            margin-right: 10px;
+            border-radius: 10px;
+        }
+        /*#banner .in li:nth-child(1){*/
+            /*background: #fec425;*/
+        /*}*/
+        /*#banner .in li:nth-child(2){*/
+            /*background: url("img/2.jpg") center;*/
+        /*}*/
+        /*#banner .in li:nth-child(3){*/
+            /*background: url("img/3.jpg") center;*/
+        /*}*/
+        /*#banner .in li:nth-child(4){*/
+            /*background: url("img/4.jpg") center;*/
+        /*}*/
+        /*#banner .in li:nth-child(5){*/
+            /*background: url("img/5.jpg") center;*/
+        /*}*/
+        #banner .in #xz{
+            position: absolute;
+            left: 120px;
+            top: 0px;
+            /*background: #fec425;*/
+            animation:xz 15s linear infinite;
+        }
+        @keyframes xz{
+            0%{left: 0px;background: #fec425;}
+            19%{left: 0px;background: #fec425;}
+            20%{left: 60px;background: #c40002;}
+            39%{left: 60px;background: #c40002;}
+            40%{left: 120px;background: #f06a23;}
+            59%{left: 120px;background: #f06a23;}
+            60%{left: 180px;background: #ffffff;}
+            79%{left: 180px;background: #ffffff;}
+            80%{left: 240px;background: #1363a0;}
+            99%{left: 240px;background: #1363a0;}
+            100%{left: 0px;background: #fec425;}
+        }
+    </style>
+</head>
+<body>
+<div id="top">
+    <img src="img/logo.png" alt=""/>
+</div>
+<div id="nav">
+    <ul>
+        <li>首页</li>
+        <li>关于我们</li>
+        <li>在线预览</li>
+        <li>精品欣赏</li>
+        <li>鉴定专家</li>
+        <li>在线征集</li>
+        <li>联系我们</li>
+    </ul>
+</div>
+<div id="banner">
+    <ul class="cont">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    </ul>
+    <ul class="in">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li id="xz"></li>
+        <li></li>
+    </ul>
+</div>
+</body>
+</html>

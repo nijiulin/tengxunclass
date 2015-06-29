@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #flash{
+            width: 760px;
+            height: 300px;
+            background: #990033;
+            margin: 50px auto;
+            position: relative;
+        }
+        #flash .but_left{
+            position: absolute;
+            left: 10px;
+            top: 120px;
+            z-index: 5;
+        }
+        #flash .but_right{
+            position: absolute;
+            right: 10px;
+            top: 120px;
+            z-index: 5;
+        }
+
+        #flash .content{
+            width: 760px;
+            height: 300px;
+            border: 3px solid blue;
+            position: absolute;
+            overflow: hidden;
+        }
+        #flash .content img{
+            position: absolute;
+        }
+        #flash .content img.f_1_1{
+            left: -340px;
+            top: 80px;
+            opacity: 0;
+        }
+        #flash .content img.f_1_2{
+            left: -340px;
+            top: 150px;
+            opacity: 0;
+        }
+        #flash .content img.f_1_3{
+            left: 760px;
+            top: 0px;
+            opacity: 0;
+        }
+        #flash .content img.f_2_1{
+            top: 170px;
+            left: 20px;
+            opacity: 0;
+        }
+        #flash .content img.f_2_2{
+            top: 300px;
+            left: 20px;
+            opacity: 0;
+        }
+        #flash .content img.f_2_3{
+            top: 300px;
+            left: 420px;
+            opacity: 0;
+        }
+        #flash .content img.f_3_1{
+            top: 120px;
+            left: 200px;
+            z-index: 3;
+            opacity: 0;
+        }
+        #flash .content img.f_3_2{
+            top: 300px;
+            left: 320px;
+            z-index: 3;
+            opacity: 0;
+        }
+        #flash .content img.f_3_3{
+            top: 0px;
+            left: -110px;
+            opacity: 0;
+        }
+        #flash .content img.f_4_1{
+            top: 300px;
+            left: 80px;
+            /*z-index: 3;*/
+            opacity: 0;
+        }
+        #flash .content img.f_4_2{
+            top: 80px;
+            left: 340px;
+            opacity: 0;
+            /*z-index: 3;*/
+        }
+        #flash .content img.f_4_3{
+            top: 300px;
+            left: 340px;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="flash">
+    <img src="images/left.png" class="but_left" alt=""/>
+    <img src="images/right.png" class="but_right" alt=""/>
+<!--11111111111111111111111-->
+    <div class="content" style="background: url('images/bg1.jpg');z-index: 2">
+        <img class="f_1_1" src="images/flash1.png" alt=""/>
+        <img class="f_1_2" src="images/flash12.png" alt=""/>
+        <img class="f_1_3" src="images/flash13.png" alt=""/>
+    </div>
+    <!--22222222222222222222222-->
+    <div class="content" style="background: #e66c57">
+        <img class="f_2_1" src="images/flash2.png" alt=""/>
+        <img class="f_2_2" src="images/flash22.png" alt=""/>
+        <img class="f_2_3" src="images/flash23.png" alt=""/>
+    </div>
+    <!--333333333333333333333333333-->
+    <div class="content" style="background: #202f3d">
+        <img class="f_3_1" src="images/flash3.png" alt=""/>
+        <img class="f_3_2" src="images/flash32.png" alt=""/>
+        <img class="f_3_3" src="images/flash33.png" alt=""/>
+    </div>
+    <!--444444444444444444444444444-->
+    <div class="content" style="background: url('images/bg2.jpg')">
+        <img class="f_4_1" src="images/flash4.png" alt=""/>
+        <img class="f_4_2" src="images/flash42.png" alt=""/>
+        <img class="f_4_3" src="images/flash43.png" alt=""/>
+    </div>
+</div>
+<script src="js/jquery.js"></script>
+<script>
+    var _index = 0;
+    var arrylist = null;
+    var arrylist2 = null;
+    //刚进入加载第一个动画
+    arrydemo();
+    donghua();
+    //右点击事件
+    $("#flash img.but_right").click(function(){
+        _index++;
+        if(_index > 3){
+            _index = 0;
+        }
+        arrydemo(); //调用数组
+        donghua(); // 动画执行
+    });
+    //左点击事件
+    $("#flash img.but_left").click(function(){
+        _index--;
+        if(_index < 0){
+            _index = 3;
+        }
+        arrydemo();
+        donghua();
+    });
+    //数组赋值函数
+    function arrydemo(){
+    $("#flash .content").eq(_index).fadeIn().siblings("div").fadeOut();
+    if(_index == 0){
+        arrylist = ["img.f_1_1","img.f_1_2","img.f_1_3"];
+        arrylist2 = [{left:"20px",opacity:"1"},{left:"20px",opacity:"1"},{left:"315px",opacity:"1"}]
+    }else if(_index == 1){
+        arrylist = ["img.f_2_1","img.f_2_2","img.f_2_3"];
+        arrylist2 = [{top:"50px",opacity:"1"},{top:"160px",opacity:"1"},{top:"0px",opacity:"1"}]
+    }else if(_index == 2){
+        arrylist = ["img.f_3_1","img.f_3_2","img.f_3_3"];
+        arrylist2 = [{left:"320px",opacity:"1"},{top:"200px",opacity:"1"},{opacity:"1"}]
+    }else if(_index == 3){
+        arrylist = ["img.f_4_1","img.f_4_2","img.f_4_3"];
+        arrylist2 = [{top:"0px",opacity:"1"},{opacity:"1"},{top:"220px",opacity:"1"}]
+    }
+}
+    function donghua(){
+        $("#flash .content").find("img").removeAttr("style");
+        $("#flash .content").eq(_index).find(arrylist[0]).animate(arrylist2[0],1000,function(){
+            $("#flash .content").eq(_index).find(arrylist[1]).animate(arrylist2[1],1000,function(){
+                $("#flash .content").eq(_index).find(arrylist[2]).animate(arrylist2[2],1000)
+            })
+        });
+    }
+</script>
+</body>
+</html>
